@@ -1,8 +1,9 @@
-from modules import stt, llm
+from modules import stt, llm, tts
 
 def main():
     print("Jarvis is ready. Press Enter to speak, Ctrl+C to quit.\n")
     stt.load_model()
+    tts.load_model()
 
     while True:
         input("[ Press Enter to speak ]")
@@ -15,6 +16,7 @@ def main():
         print(f"You: {user_input}")
         reply = llm.ask(user_input)
         print(f"Jarvis: {reply}\n")
+        tts.speak(reply)
 
 if __name__ == "__main__":
     main()
